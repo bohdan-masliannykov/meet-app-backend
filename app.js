@@ -18,10 +18,6 @@ app.get("/users", (req, res) => {
     ]);
 });
 
-app.all("*", (req, res) => {
-    res.status(404).json({ message: "Route not found" });
-});
-
 app.listen(PORT, async () => {
     console.log(`Server is running on port ${PORT}`);
 });
