@@ -10,12 +10,16 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/users", () => {
-    return [
+app.get("/users", (req, res) => {
+    res.json([
         { id: 1, name: "John Doe" },
         { id: 2, name: "Jane Smith" },
         { id: 3, name: "Alice Johnson" }
-    ]
+    ]);
+});
+
+app.all("*", (req, res) => {
+    res.status(404).json({ message: "Route not found" });
 });
 
 app.listen(PORT, async () => {
